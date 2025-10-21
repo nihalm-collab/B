@@ -2,6 +2,6 @@ streamlit
 datasets
 faiss-cpu
 sentence-transformers
-haystack== 2.1.0
+farm-haystack==2.1.0
 python-dotenv
 google-generativeai
