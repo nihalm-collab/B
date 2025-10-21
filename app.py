@@ -14,10 +14,10 @@ Arayüz: Streamlit
 import os
 import streamlit as st
 from datasets import load_dataset
-from haystack import Pipeline
+from haystack import Document, Pipeline
 from haystack.document_stores import FAISSDocumentStore
 from haystack.nodes import EmbeddingRetriever
-from haystack.nodes import PromptNode, PromptTemplate
+from haystack.pipelines import Pipeline
 from haystack.schema import Document
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -63,10 +63,10 @@ def init_vector_db():
         embedding_model="sentence-transformers/paraphrase-MiniLM-L6-v2",
         model_format="sentence_transformers"
     )
-    document_store.write_documents(docs)
-    document_store.update_embeddings(retriever)
+     if not document_store.get_all_documents():
+        document_store.write_documents(docs)
+        document_store.update_embeddings(retriever)
     return document_store, retriever
-
 document_store, retriever = init_vector_db()
 
 # --------------------------------------------------
