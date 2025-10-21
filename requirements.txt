@@ -1,0 +1,7 @@
+streamlit
+datasets
+faiss-cpu
+sentence-transformers
+haystack
+python-dotenv
+google-generativeai
